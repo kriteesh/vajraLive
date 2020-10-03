@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <style>
+    html,body{
+      margin:0;
+      width : 100%;
+      height : 100%;
+      background : linear-gradient(45deg,black,green);
+    }
+    .header{
+      height: 10vh;
+      font-size: 5vmin;
+      line-height: 10vh;
+      background: linear-gradient(135deg,#01519b00 18%, #FF9800 18%, #FF9800 22%, #01519b00 22%);
+      color: white;
+      width: 100vw;
+      text-align: center;
+      animation: slide 2s ease-in-out 1;
+      font-family: 'Quicksand', monospace;
+      user-select: none;
+    }
+    #capture{
+      width: 96vw;
+      height: 96vw;
+      margin-left: 2vw;
+      background: url('assets/second.jpeg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      top: 12vh;
+    }
+    #output{
+      width: 60vw;
+      left: 18vw;
+      top: 28vw;
+      height: 60vw;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: absolute;
+    }
+
+    .wrapper{
+      position: absolute;
+      display :flex;
+      bottom : 10vh;
+      justify-content: space-evenly;
+      width: 96vw;
+      margin-left : 2vw;
+    }
+
+    .swinch{
+      position:absolute;
+      bottom : 20vh;
+      margin-left : 30vw;
+      font-size : 4vmin!important;
+    }
+    .uploader,.downloader,.swinch{
+      width: 40vw;
+      height: 7vh;
+      border: 2px solid white;
+      color: white;
+      cursor: pointer;
+      line-height: 7vh;
+      font-size: 4vmin;
+      display: flex;
+      justify-content: center;
+      font-family: 'Quicksand', monospace;
+      user-select: none;
+      transition : 100ms;
+    }
+    label,a{
+      text-decoration: none;
+      font-size : 4vmin;
+      color : white;
+    }
+
+    .more{
+      width: 70vw!important;
+    border-radius: 50%;
+    left: 13vw!important;
+    top: 24vw!important;
+    height: 70vw!important;
+    /* margin-left: 28vw; */
+    background-size: contain;
+    position: absolute;
+    }
+
+    @keyframes slide{
+    0%{background-position : 10px;}
+    50%{background-position : 1000px;}
+    100%{background-position : 10px;}
+    }
+
+    canvas{
+      position: absolute;
+      top : 60vh;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">Bharti AXA DP Changer</div>
+<div id="capture">
+    <div id="output"></div>
+</div>
+<div class="swinch">Switch</div>
+<div class="wrapper">
+  <div class="uploader">
+    <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
+    <label for="file">Upload Image</label>
+      </div>
+    <a id ="link" href="#" download="retailPremierLeagueDP.png" class="downloader">Download Image</a>
+</div>
+
+</body>
+<script>
+
+var swinch  = document.getElementsByClassName('swinch')[0];
+
+var pol =false;
+swinch.onclick = ()=>{
+  pol = !pol;
+  capturer = document.getElementById("capture");
+  outputter = document.getElementById("output");
+  if(pol) {
+    capturer.style.background = "url('assets/third.jpeg')";
+    outputter.classList.add('more');
+  }
+  else {
+    capturer.style.background = "url('assets/second.jpeg')";
+    outputter.classList.remove('more');
+  }
+  capturer.style.backgroundSize = "contain";
+  capturer.style.backgroundPosition = "center";
+  capturer.style.backgroundRepeat = "no-repeat";
+
+}
+
+link = document.getElementById('link');
+
+var loadFile = function(event) {
+	var image = document.getElementById('output');
+	image.style.backgroundImage = "url(" + URL.createObjectURL(event.target.files[0]) +")";
+  html2canvas(document.querySelector("#capture"), { logging: true, letterRendering: 1,useCORS: true }).then(canvas => {
+    document.body.appendChild(canvas);
+    link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"))});
+}
+
+
+
+</script>
+</html>
+
+
+
+
+<!-- <script>
+    if ('serviceWorker' in navigator) {
+      console.log("Will the service worker register?");
+      navigator.serviceWorker.register('serviceWorker.js')
+    .	then(function(reg){
+          console.log("Yes, it did.");
+        }).catch(function(err) {
+          console.log("No it didn't. This happened: ", err)
+        });
+    }
+  </script> -->

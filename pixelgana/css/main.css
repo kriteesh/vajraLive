@@ -1,0 +1,45 @@
+html,body{
+    margin :0;
+    width : 100%;
+    height : 100%;
+    overflow-x : hidden;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height : 100%;
+    place-items:center;
+    background : #131313;
+    font-family : 'Khand', monospace;
+}
+
+.header{
+    text-align : center;
+    width : 90%;
+    margin : 2vh 2vw;
+    padding : 2vh 2vw;
+    border-radius : 20px;
+    border : 5px solid white;
+    box-shadow : 0 0 10px orange inset,0 0 20px yellow inset,0 0 10px orange,0 0 20px yellow;
+    height : 10vh;
+    line-height: 10vh;
+    text-shadow :0 0 20px yellow,0 0 10px orange;
+    font-size : 6vh;
+    color : white;
+}
+
+.counterArea{
+    width : 80vmin;
+    max-width : 80vmax;
+    height : 10vh;
+    outline : none;
+    border : 2px solid #131313;
+    line-height : 10vh;
+}
+
+input[type=number]::-webkit-inner-spin-button{
+    -webkit-appearance: none; 
+    margin: 0; 
+}

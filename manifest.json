@@ -1,0 +1,17 @@
+{
+    "name": "Bharti Axa Axis Garage Cash",
+    "short_name": "Garage Cash",
+    "theme_color": "#01519b",
+    "background_color": "#01519b",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "index.html",
+      "icons": [
+      {
+        "src": "assets/icon.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }
+    ]
+  }
